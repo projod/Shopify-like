@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Light/Dark Mode Toggle Button -->
+<button id="themeToggle" aria-label="Toggle light/dark mode">🌙</button>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Shopify-Like Product Page</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="container">
+  <section class="product-container" aria-label="Product Details">
+
+    <!-- IMAGE GALLERY -->
+    <div class="image-gallery">
+  <div class="main-image" id="mainImageContainer" tabindex="0" aria-label="Main product image container">
+    <img src="C:\Users\saksham\Desktop\new website\shirt.png" alt="Product Image 1" id="mainImage" />
+  </div>
+  <div class="thumbnails" id="thumbnails" role="list" aria-label="Product image thumbnails">
+    <div class="thumbnail active" role="listitem" tabindex="0" aria-label="Select image 1" data-img="C:\Users\saksham\Desktop\new website\shirt.png">
+      <img src="C:\Users\saksham\Desktop\new website\shirt.png" alt="Product Thumbnail 1" />
+    </div>
+    <div class="thumbnail" role="listitem" tabindex="0" aria-label="Select image 2" data-img="C:\Users\saksham\Desktop\new website\image1.jpg">
+      <img src="C:\Users\saksham\Desktop\new website\image1.jpg" alt="Product Thumbnail 2" />
+    </div>
+    <div class="thumbnail" role="listitem" tabindex="0" aria-label="Select image 3" data-img="C:\Users\saksham\Desktop\new website\image2.jpg">
+      <img src="C:\Users\saksham\Desktop\new website\image2.jpg" alt="Product Thumbnail 3" />
+    </div>
+    <div class="thumbnail" role="listitem" tabindex="0" aria-label="Select image 4" data-img="C:\Users\saksham\Desktop\new website\image3.jpg">
+      <img src="C:\Users\saksham\Desktop\new website\image3.jpg" alt="Product Thumbnail 4" />
+    </div>
+    <div class="thumbnail" role="listitem" tabindex="0" aria-label="Select image 5" data-img="C:\Users\saksham\Desktop\new website\image4.png">
+      <img src="C:\Users\saksham\Desktop\new website\image4.png" alt="Product Thumbnail 5" />
+    </div>
+  </div>
+</div>
+
+
+    <!-- PRODUCT DETAILS -->
+    <div class="product-details">
+      <h1 id="productTitle">White Shirt</h1>
+      <p class="price" id="productPrice" aria-live="polite" aria-atomic="true">₹499.99</p>
+      <div class="variants" aria-label="Product Variants">
+        <div class="color-variants" role="group" aria-labelledby="colorSelectionLabel">
+          <span id="colorSelectionLabel">Select Color:</span>
+          <button class="color-swatch red" aria-pressed="false" aria-label="Red color" data-color="red" tabindex="0"></button>
+          <button class="color-swatch blue" aria-pressed="false" aria-label="Blue color" data-color="blue" tabindex="0"></button>
+          <button class="color-swatch green" aria-pressed="false" aria-label="Green color" data-color="green" tabindex="0"></button>
+          <button class="color-swatch black" aria-pressed="false" aria-label="Black color" data-color="black" tabindex="0"></button>
+        </div>
+
+        <div class="size-variants" role="group" aria-labelledby="sizeSelectionLabel">
+          <span id="sizeSelectionLabel">Select Size:</span>
+          <select id="sizeSelect" aria-describedby="sizeChartDesc">
+            <option value="S">Small</option>
+            <option value="M" selected>Medium</option>
+            <option value="L">Large</option>
+            <option value="XL">Extra Large</option>
+          </select>
+          <button id="sizeChartBtn" aria-describedby="sizeChartDesc" aria-haspopup="dialog" aria-controls="sizeChartModal">Size Chart</button>
+          <p id="sizeChartDesc" class="sr-only">Click to open size chart in a popup modal</p>
+        </div>
+      </div>
+
+      <div>
+        <button id="addToCartBtn" aria-label="Add product to cart">Add to Cart</button>
+        <button id="compareColorsBtn" aria-haspopup="dialog" aria-controls="colorCompareModal">Compare Colors</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SIZE CHART MODAL -->
+  <div class="modal" id="sizeChartModal" aria-modal="true" role="dialog" aria-labelledby="sizeChartTitle" tabindex="-1">
+    <div class="modal-content">
+      <button class="modal-close" id="sizeChartCloseBtn" aria-label="Close size chart modal">&times;</button>
+      <h2 id="sizeChartTitle">Size Chart</h2>
+      <table class="size-chart-table">
+        <thead>
+          <tr><th>Size</th><th>Chest (inches)</th><th>Waist (inches)</th><th>Length (inches)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Small</td><td>34-36</td><td>28-30</td><td>26</td></tr>
+          <tr><td>Medium</td><td>38-40</td><td>32-34</td><td>27</td></tr>
+          <tr><td>Large</td><td>42-44</td><td>36-38</td><td>28</td></tr>
+          <tr><td>XL</td><td>46-48</td><td>40-42</td><td>29</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- COLOR COMPARE MODAL -->
+  <div class="modal" id="colorCompareModal" aria-modal="true" role="dialog" aria-labelledby="colorCompareTitle" tabindex="-1">
+    <div class="modal-content">
+      <button class="modal-close" id="colorCompareCloseBtn" aria-label="Close color compare modal">&times;</button>
+      <h2 id="colorCompareTitle">Compare Colors</h2>
+      <div id="colorCompareContainer" class="color-compare-container" aria-label="Select colors to compare"></div>
+      <div style="margin-top:1rem;">
+        <button id="colorCompareConfirmBtn">Compare Selected Colors</button>
+      </div>
+      <div id="colorCompareResult" style="margin-top:1rem;"></div>
+    </div>
+  </div>
+
+  <!-- PAIR WELL WITH -->
+  <section class="pair-well-with" aria-label="Pair well with products">
+    <h3>Pair Well With</h3>
+    <div class="scrollable-row" tabindex="0">
+      <div class="product-card" tabindex="0">
+        <img src="C:\Users\saksham\Desktop\new website\pant1.jpg" alt="Product A" />
+        <p>Product A</p>
+        <p>₹299.99</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product-card" tabindex="0">
+        <img src="C:\Users\saksham\Desktop\new website\pamt2.jpg" alt="Product B" />
+        <p>Product B</p>
+        <p>₹399.99</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product-card" tabindex="0">
+        <img src="C:\Users\saksham\Desktop\new website\PANT3.jpg" alt="Product C" />
+        <p>Product C</p>
+        <p>₹199.99</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product-card" tabindex="0">
+        <img src="C:\Users\saksham\Desktop\new website\pant4.jpg" alt="Product D" />
+        <p>Product D</p>
+        <p>₹249.99</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT BUNDLE -->
+  <section class="product-bundle" aria-label="Product bundle suggestion">
+    <h3>Buy These Together</h3>
+    <div class="bundle-item">
+      <p>Awesome Product: $59.99</p>
+      <p>Product A: ₹299.99</p>
+      <p><strong>Total: ₹799.98</strong></p>
+      <button id="addBundleBtn">Add Bundle to Cart</button>
+    </div>
+  </section>
+
+  <!-- TABS FIXED -->
+  <section class="tabs-section" aria-label="Product information tabs">
+    <div class="tabs">
+      <button class="tab active" data-tab="desc">Description</button>
+      <button class="tab" data-tab="info">Product Information</button>
+      <button class="tab" data-tab="shipping">Shipping Details</button>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="desc">
+        <p>This amazing product is made of high-quality materials to ensure comfort and durability.</p>
+      </div>
+      <div class="tab-pane" id="info">
+        <p>Material: 100% Cotton<br />Care: Hand wash recommended<br />Origin: Made in USA</p>
+      </div>
+      <div class="tab-pane" id="shipping">
+        <p>Standard shipping: 5-7 business days.<br />Express shipping available at extra cost.<br />Free returns within 30 days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related-products" aria-label="Related products">
+    <h3>Related Products</h3>
+    <div class="related-product-grid">
+      <article class="related-product-card" tabindex="0">
+        <span class="badge">New</span>
+        <img src="C:\Users\saksham\Desktop\new website\new 1.jpg" alt="Related product 1" />
+        <p>Related Product 1</p>
+        <p class="price">₹499.99</p>
+      </article>
+      <article class="related-product-card" tabindex="0">
+        <span class="badge">Popular</span>
+        <img src="C:\Users\saksham\Desktop\new website\new 2.jpg"alt="Related product 2" />
+        <p>Related Product 2</p>
+        <p class="price">₹599.99</p>
+      </article>
+      <article class="related-product-card" tabindex="0">
+        <img src="C:\Users\saksham\Desktop\new website\new 3.jpg" alt="Related product 3" />
+        <p>Related Product 3</p>
+        <p class="price">₹299.99</p>
+      </article>
+      <article class="related-product-card" tabindex="0">
+        <img src="C:\Users\saksham\Desktop\new website\new 4.jpg" alt="Related product 4" />
+        <p>Related Product 4</p>
+        <p class="price">₹399.99</p>
+      </article>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+
+
+
+<!-- Screen reader only styles -->
+<style>
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  border: 0 !important;
+}
+</style>
+</body>
+</html>
+
